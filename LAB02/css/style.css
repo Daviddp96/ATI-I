@@ -10,8 +10,13 @@ main {
     height: 100vh;
 }
 
+html {
+    font-size: 16px;
+}
+
 .listado {
     font-family: sans-serif;
+    font-size: 1rem;
 }
 
 header {
@@ -33,6 +38,7 @@ nav ul li {
     align-items: center;
     margin-right: 1rem;
     min-height: 48px;
+    font-size: 1.1rem;
 }
 nav ul li:first-child {
     display: inline-flex;
@@ -42,14 +48,26 @@ nav ul li:nth-child(2) {
     border-top: none;
     border-bottom: none;
     padding: 0 2rem;
+    font-size: 1.2rem;
 }
 nav li form {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
     gap: 0.5rem;
 }
 nav ul li form input {
     font-size: 1.2rem;
+    padding: 0.3rem;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+nav ul li form input:focus {
+    outline: none;
+    border-color: #c8622b;
+    background-color: #f0f7ff;
+    box-shadow: 0 0 5px rgba(43, 119, 200, 0.3);
 }
 nav ul li form button {
     font-size: 1rem;
@@ -99,11 +117,20 @@ nav ul li form button {
 .perfiles__section ul li img {
     width: 80px;
 }
+
+.perfiles__section ul li p {
+    font-size: 1rem;
+}
+
 footer {
     width: 100%;
     background-color: #78ade6;
     text-align: center;
     padding: 1rem 0;
+}
+
+footer p {
+    font-size: 0.9rem;
 }
 
 /* Pagina de perfil */
@@ -143,10 +170,12 @@ a:visited {
 }
 .perfil__description {
     font-family: sans-serif;
+    font-size: 1rem;
     font-style: italic;
 }
 .perfil__list {
     list-style: none;
+    font-size: 1rem;
 }
 .perfil__list li span {
     display: inline-block;
@@ -164,5 +193,148 @@ a:visited {
     }
     100% {
         transform: rotate(15deg) scale(1.05);
+    }
+}
+
+/* Media queries */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0.5rem;
+        gap: 1rem;
+    }
+    
+    nav li form {
+        grid-template-columns: 1fr;
+    }
+    
+    nav ul li:nth-child(2) {
+        border: none;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .perfiles__section ul {
+        gap: 1rem;
+        justify-content: center;
+    }
+    
+    .perfiles__section ul li {
+        min-width: 150px;
+        min-height: 180px;
+    }
+    
+    .perfil__img {
+        width: 150px;
+    }
+
+    .perfil {
+        flex-direction: column;
+    }
+    
+    .perfil__name {
+        font-size: 1.75rem;
+    }
+
+    .perfiles__section ul li p {
+        font-size: 0.9rem;
+    }
+    
+    footer p {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+    
+    .perfiles__section ul {
+        max-width: 460px;
+        gap: 1.5rem;
+        justify-content: center;
+    }
+    
+    .perfil {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .perfil__img {
+        width: 180px;
+    }
+    
+    .perfil {
+        flex-direction: column;
+    }
+    
+    .perfil__name {
+        font-size: 1.85rem;
+    }
+
+    .perfiles__section ul li p {
+        font-size: 0.95rem;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
+    
+    nav ul {
+        padding: 1rem;
+        max-width: 800px;
+    }
+    
+    .perfiles__section ul {
+        max-width: 800px;
+    }
+    
+    .perfil {
+        padding: 1rem;
+        max-width: 800px;
+    }
+    
+    .perfil__img {
+        width: 200px;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+    html {
+        font-size: 17px;
+    }
+    
+    nav ul {
+        max-width: 1100px;
+    }
+    
+    .perfiles__section ul {
+        max-width: 1020px;
+    }
+    
+    .perfil {
+        max-width: 1000px;
+    }
+    
+    .perfil__img {
+        width: 200px;
     }
 }
