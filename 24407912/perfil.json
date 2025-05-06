@@ -1,0 +1,13 @@
+const perfil = {
+    "nombre": "David Delgado Peña",
+    "descripccion": "Soy estudiante de Computación de la UCV y desarrollador web dedicado a crear sitios web de alta calidad. Además, tengo 5 años de experiencia como Project Manager en distintos sectores de la industria, lo que me ha permitido adquirir habilidades como líder.",
+    "color": "Dorado",
+    "libro": ["Retrato en Sangre"],
+    "musica": ["Instrumental"],
+    "video_juego": ["Counter Strike", "Rainbow Six Siege", "Call of Duty"],
+    "lenguajes": [ "Javascript", "TypeScript", "C++"],
+    "email": "david.delgadop88@gmail.com",
+    "ci": "24407912",
+    "genero": "Masculino",
+    "fecha_nacimiento": "09/04/1996"
+}
