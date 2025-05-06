@@ -1,4 +1,4 @@
-const perfil = {
+{
     "nombre": "David Delgado Peña",
     "descripccion": "Soy estudiante de Computación de la UCV y desarrollador web dedicado a crear sitios web de alta calidad. Además, tengo 5 años de experiencia como Project Manager en distintos sectores de la industria, lo que me ha permitido adquirir habilidades como líder.",
     "color": "Dorado",
