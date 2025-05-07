@@ -13,4 +13,23 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Configuración cargada');
     })
     .catch(error => console.error('Error al cargar la configuración:', error));
+
+    fetch('./reto3/datos/index.json')
+    .then(response => response.text())
+    .then(text => {
+        const perfiles = JSON.parse(text.replace('const perfiles = ', ''));
+        const perfilesSection = document.querySelector('.perfiles__section ul');
+        perfilesSection.innerHTML = '';
+        
+        perfiles.forEach(estudiante => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <img src="./reto3/${estudiante.imagen}" alt="${estudiante.ci}">
+                <p>${estudiante.nombre}</p>
+            `;
+            perfilesSection.appendChild(li);
+        });
+        console.log('Lista de estudiantes cargada');
+    })
+    .catch(error => console.error('Error al cargar los estudiantes:', error));
 }); 

@@ -88,13 +88,12 @@ nav ul li form button {
     justify-content: center;
 }
 .perfiles__section ul {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem;
-    list-style-type: none;
-    max-width: 670px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
+    list-style-type: none;
+    max-width: 1000px;
+    padding: 0 1rem;
 }
 .perfiles__section ul li {
     display: inline-flex;
@@ -120,6 +119,7 @@ nav ul li form button {
 
 .perfiles__section ul li p {
     font-size: 1rem;
+    text-align: center;
 }
 
 footer {
@@ -223,8 +223,7 @@ a:visited {
     }
     
     .perfiles__section ul {
-        gap: 1rem;
-        justify-content: center;
+        grid-template-columns: repeat(1, 1fr);
     }
     
     .perfiles__section ul li {
@@ -266,9 +265,8 @@ a:visited {
     }
     
     .perfiles__section ul {
-        max-width: 460px;
-        gap: 1.5rem;
-        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
     }
     
     .perfil {
@@ -304,6 +302,7 @@ a:visited {
     }
     
     .perfiles__section ul {
+        grid-template-columns: repeat(3, 1fr);
         max-width: 800px;
     }
     

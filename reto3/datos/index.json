@@ -1,7 +1,7 @@
 const perfiles = [
     {
         "ci": "24407912",
-        "imagen": "24407912\/24407912.jpg",
+        "imagen": "../../24407912/CEDULAGrande.jpg",
         "nombre": "David Delgado Peña"
     },
     {
