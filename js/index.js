@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.text())
     .then(text => {
         const config = JSON.parse(text);
-        noResultsText = config.no_resultados || 'No hay alumnos que tengan en su nombre: ';
+        noResultsText = config.no_resultados;
         
         if (isProfilePage) {
             
