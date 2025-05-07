@@ -1,9 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     const isProfilePage = document.querySelector('.main-perfil') !== null;
-    const configPath = isProfilePage ? '../conf/configES.json' : './conf/configES.json';
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang') || 'ES';
+    const configPath = isProfilePage ? 
+        `../conf/config${lang}.json` : 
+        `./conf/config${lang}.json`;
 
     fetch(configPath)
+    .then(response => {
+        if (!response.ok) {
+            return fetch(isProfilePage ? '../conf/configES.json' : './conf/configES.json');
+        }
+        return response;
+    })
     .then(response => response.text())
     .then(text => {
         const config = JSON.parse(text);
@@ -18,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
             labels[4].textContent = config.lenguajes + ": ";
 
             
-            const params = new URLSearchParams(window.location.search);
             const ci = params.get('ci');
 
             if (ci) {
@@ -94,8 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             perfiles.forEach(estudiante => {
                 const li = document.createElement('li');
+                const langParam = lang !== 'ES' ? `&lang=${lang}` : '';
                 li.innerHTML = `
-                    <a href="perfil.html?ci=${estudiante.ci}">
+                    <a href="perfil.html?ci=${estudiante.ci}${langParam}">
                         <img src="./${estudiante.imagen}" alt="${estudiante.ci}">
                         <p>${estudiante.nombre}</p>
                     </a>
