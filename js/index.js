@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
         `../conf/config${lang}.json` : 
         `./conf/config${lang}.json`;
 
+    let perfilesData = [];
+    let noResultsText = '';
+
     fetch(configPath)
     .then(response => {
         if (!response.ok) {
@@ -17,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.text())
     .then(text => {
         const config = JSON.parse(text);
+        noResultsText = config.no_resultados || 'No hay alumnos que tengan en su nombre: ';
         
         if (isProfilePage) {
             
@@ -74,9 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     listItems[4].appendChild(document.createTextNode(formatList(perfil.lenguajes)));
                     
                     
-                    const emailLink = document.querySelector('.perfil__info a');
-                    emailLink.href = `mailto:${perfil.email}`;
-                    emailLink.textContent = perfil.email;
+                    const emailContainer = document.querySelector('#text-contacto');
+                    const [before, after] = config.email.split('[email]');
+                    emailContainer.innerHTML = `${before}<a href="mailto:${perfil.email}">${perfil.email}</a>${after}`;
                 })
                 .catch(error => console.error('Error al cargar el perfil:', error));
             }
@@ -88,6 +92,35 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('input[type="text"]').placeholder = config.buscar + "...";
             document.querySelector('button[type="submit"]').innerHTML = config.buscar;
             document.querySelector('footer').textContent = config.copyRight;
+
+            const searchForm = document.querySelector('form');
+            const searchInput = searchForm.querySelector('input');
+            
+            searchForm.addEventListener('submit', (e) => e.preventDefault());
+            
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                const perfilesSection = document.querySelector('.perfiles__section ul');
+                
+                if (query === '') {
+                    renderPerfiles(perfilesData);
+                    return;
+                }
+
+                const filteredPerfiles = perfilesData.filter(estudiante => 
+                    estudiante.nombre.toLowerCase().includes(query)
+                );
+
+                if (filteredPerfiles.length === 0) {
+                    perfilesSection.innerHTML = `
+                        <li class="no-results">
+                            <p>${noResultsText} ${query}</p>
+                        </li>
+                    `;
+                } else {
+                    renderPerfiles(filteredPerfiles);
+                }
+            });
         }
     })
     .catch(error => console.error('Error al cargar la configuración:', error));
@@ -97,22 +130,26 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('./datos/index.json')
         .then(response => response.text())
         .then(text => {
-            const perfiles = JSON.parse(text.replace('const perfiles = ', ''));
-            const perfilesSection = document.querySelector('.perfiles__section ul');
-            perfilesSection.innerHTML = '';
-            
-            perfiles.forEach(estudiante => {
-                const li = document.createElement('li');
-                const langParam = lang !== 'ES' ? `&lang=${lang}` : '';
-                li.innerHTML = `
-                    <a href="perfil.html?ci=${estudiante.ci}${langParam}">
-                        <img src="./${estudiante.imagen}" alt="${estudiante.ci}">
-                        <p>${estudiante.nombre}</p>
-                    </a>
-                `;
-                perfilesSection.appendChild(li);
-            });
+            perfilesData = JSON.parse(text.replace('const perfiles = ', ''));
+            renderPerfiles(perfilesData);
         })
         .catch(error => console.error('Error al cargar los estudiantes:', error));
+    }
+
+    function renderPerfiles(perfiles) {
+        const perfilesSection = document.querySelector('.perfiles__section ul');
+        perfilesSection.innerHTML = '';
+        
+        perfiles.forEach(estudiante => {
+            const li = document.createElement('li');
+            const langParam = lang !== 'ES' ? `&lang=${lang}` : '';
+            li.innerHTML = `
+                <a href="perfil.html?ci=${estudiante.ci}${langParam}">
+                    <img src="./${estudiante.imagen}" alt="${estudiante.ci}">
+                    <p>${estudiante.nombre}</p>
+                </a>
+            `;
+            perfilesSection.appendChild(li);
+        });
     }
 }); 

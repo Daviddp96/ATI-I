@@ -202,6 +202,25 @@ a:visited {
     font-weight: bold;
 }
 
+.perfiles__section ul .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    background: none;
+    box-shadow: none;
+    min-height: auto;
+}
+
+.perfiles__section ul .no-results:hover {
+    animation: none;
+    background: none;
+    box-shadow: none;
+}
+
+.perfiles__section ul .no-results p {
+    color: #666;
+    font-style: italic;
+}
+
 /* Animaciones */
 @keyframes rotateAndZoom {
     0% {
@@ -353,3 +372,4 @@ a:visited {
         width: 200px;
     }
 }
+
