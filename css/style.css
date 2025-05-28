@@ -27,49 +27,46 @@ header {
     justify-content: center;
     font-size: 1.2rem;
 }
-nav ul {
+.nav__list {
     display: flex;
     gap: 2rem;
     list-style-type: none;
     max-width: 1000px;
 }
-nav ul li {
+.nav__item {
     display: inline-flex;
     align-items: center;
     margin-right: 1rem;
     min-height: 48px;
     font-size: 1.1rem;
 }
-nav ul li:first-child {
-    display: inline-flex;
-}
-nav ul li:nth-child(2) {
+.nav__item--bordered {
     border: 1px solid white;
     border-top: none;
     border-bottom: none;
     padding: 0 2rem;
     font-size: 1.2rem;
 }
-nav li form {
+.nav__form {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
     gap: 0.5rem;
 }
-nav ul li form input {
+.nav__input {
     font-size: 1.2rem;
     padding: 0.3rem;
     border: 2px solid transparent;
     border-radius: 4px;
     transition: all 0.3s ease;
 }
-nav ul li form input:focus {
+.nav__input:focus {
     outline: none;
     border-color: #c8622b;
     background-color: #f0f7ff;
     box-shadow: 0 0 5px rgba(43, 119, 200, 0.3);
 }
-nav ul li form button {
+.nav__button {
     font-size: 1rem;
     color: #2b77c8;
     padding: 0.2rem;
@@ -87,7 +84,7 @@ nav ul li form button {
     display: flex;
     justify-content: center;
 }
-.perfiles__section ul {
+.perfiles__list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
@@ -95,7 +92,7 @@ nav ul li form button {
     max-width: 1000px;
     padding: 0 1rem;
 }
-.perfiles__section ul li {
+.perfiles__item {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -107,22 +104,22 @@ nav ul li form button {
     box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.25);
 }
 
-.perfiles__section ul li:hover {
+.perfiles__item:hover {
     animation: rotateAndZoom 0.5s ease-in-out forwards;
     background: #99c5dd;
     box-shadow: 5px 5px 1px 0px rgba(0,0,0,0.25);
 }
 
-.perfiles__section ul li img {
+.perfiles__image {
     width: 80px;
 }
 
-.perfiles__section ul li p {
+.perfiles__text {
     font-size: 1rem;
     text-align: center;
 }
 
-.perfiles__section ul li a {
+.perfiles__link {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,11 +131,7 @@ nav ul li form button {
     padding: 1rem;
 }
 
-.perfiles__section ul li:hover a {
-    color: inherit;
-}
-
-.perfiles__section ul .no-results {
+.perfiles__item--empty {
     grid-column: 1 / -1;
     text-align: center;
     background: none;
@@ -146,13 +139,13 @@ nav ul li form button {
     min-height: auto;
 }
 
-.perfiles__section ul .no-results:hover {
+.perfiles__item--empty:hover {
     animation: none;
     background: none;
     box-shadow: none;
 }
 
-.perfiles__section ul .no-results p {
+.perfiles__item--empty .perfiles__text {
     color: #666;
     font-style: italic;
 }
@@ -237,18 +230,18 @@ a:visited {
         font-size: 14px;
     }
     
-    nav ul {
+    .nav__list {
         flex-direction: column;
         align-items: center;
         padding: 2rem 0.5rem;
         gap: 1rem;
     }
     
-    nav li form {
+    .nav__form {
         grid-template-columns: 1fr;
     }
     
-    nav ul li:nth-child(2) {
+    .nav__item--bordered {
         border: none;
         border-top: 1px solid white;
         border-bottom: 1px solid white;
@@ -257,11 +250,11 @@ a:visited {
         padding: 1rem;
     }
     
-    .perfiles__section ul {
+    .perfiles__list {
         grid-template-columns: repeat(1, 1fr);
     }
     
-    .perfiles__section ul li {
+    .perfiles__item {
         min-width: 150px;
         min-height: 180px;
     }
@@ -278,7 +271,7 @@ a:visited {
         font-size: 1.75rem;
     }
 
-    .perfiles__section ul li p {
+    .perfiles__text {
         font-size: 0.9rem;
     }
     
@@ -292,14 +285,14 @@ a:visited {
         font-size: 15px;
     }
     
-    nav ul {
+    .nav__list {
         flex-direction: column;
         align-items: center;
         padding: 1.5rem;
         gap: 1rem;
     }
     
-    .perfiles__section ul {
+    .perfiles__list {
         grid-template-columns: repeat(2, 1fr);
         max-width: 600px;
     }
@@ -321,7 +314,7 @@ a:visited {
         font-size: 1.85rem;
     }
 
-    .perfiles__section ul li p {
+    .perfiles__text {
         font-size: 0.95rem;
     }
 }
@@ -331,12 +324,12 @@ a:visited {
         font-size: 16px;
     }
     
-    nav ul {
+    .nav__list {
         padding: 1rem;
         max-width: 800px;
     }
     
-    .perfiles__section ul {
+    .perfiles__list {
         grid-template-columns: repeat(3, 1fr);
         max-width: 800px;
     }
@@ -356,11 +349,11 @@ a:visited {
         font-size: 17px;
     }
     
-    nav ul {
+    .nav__list {
         max-width: 1100px;
     }
     
-    .perfiles__section ul {
+    .perfiles__list {
         max-width: 1020px;
     }
     
