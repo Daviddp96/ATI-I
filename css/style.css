@@ -138,6 +138,25 @@ nav ul li form button {
     color: inherit;
 }
 
+.perfiles__section ul .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    background: none;
+    box-shadow: none;
+    min-height: auto;
+}
+
+.perfiles__section ul .no-results:hover {
+    animation: none;
+    background: none;
+    box-shadow: none;
+}
+
+.perfiles__section ul .no-results p {
+    color: #666;
+    font-style: italic;
+}
+
 footer {
     width: 100%;
     background-color: #78ade6;
@@ -193,32 +212,13 @@ a:visited {
     list-style: none;
     font-size: 1rem;
 }
-.perfil__list li span {
+.perfil__list-item span {
     display: inline-block;
     min-width: 204px;
     margin-right: 2rem;
 }
-.perfil__list li:last-child {
+.perfil__list-item--bold {
     font-weight: bold;
-}
-
-.perfiles__section ul .no-results {
-    grid-column: 1 / -1;
-    text-align: center;
-    background: none;
-    box-shadow: none;
-    min-height: auto;
-}
-
-.perfiles__section ul .no-results:hover {
-    animation: none;
-    background: none;
-    box-shadow: none;
-}
-
-.perfiles__section ul .no-results p {
-    color: #666;
-    font-style: italic;
 }
 
 /* Animaciones */
